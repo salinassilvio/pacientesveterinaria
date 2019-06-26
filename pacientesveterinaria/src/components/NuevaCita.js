@@ -43,14 +43,22 @@ class NuevaCita extends Component {
             //Generar un objeto con los datos
             const nuevaCita = {...this.state.cita};
             nuevaCita.id = uuid();
-        //Agregar la cita al state de APP    
+            //Agregar la cita al state de APP
+            //datos del componente hijo al padre
             this.props.crearNuevaCita(nuevaCita)
     }
-    render() { 
+    render() {
+
+        //Extraer valor del state 
+        const{ error} = this.state;
+
+
         return (  
             <div className="card mt-5 py-5">
               <div className="card-body">
                 <h2 className="card-title text-center mb-5">Llena formulario para crear nueva cita</h2>
+                    {error ? <div className="alert alert-danger mt-2 mb-5 text-center">Todos los campos son obligatorios</div> : null}
+
                     <form method="" action="" onSubmit={this.handleSubmit}>
                     <div className="form-group row">
                             <label className="col-sm-4 col-lg-2 col-form-label">Nombre de la Mascota:</label>
