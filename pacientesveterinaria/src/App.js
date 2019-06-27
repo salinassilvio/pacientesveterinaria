@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import './bootstrap.min.css';
 import  Header from './components/Header';
 import  NuevaCita from './components/NuevaCita';
+import  ListaCitas from './components/ListaCitas';
 
 class App extends Component {
   state = { 
@@ -26,6 +27,11 @@ class App extends Component {
           <NuevaCita
             crearNuevaCita={this.crearNuevaCita}
           ></NuevaCita>
+          </div>
+          <div className=" mt-5 col-md-10 mx-auto">
+              <ListaCitas
+                citas={this.state.citas}
+              ></ListaCitas>
           </div>
         </div>
 
