@@ -8,6 +8,23 @@ class App extends Component {
   state = { 
     citas:[]
    }
+
+   //cuando la aplicacion carga 
+   componentDidMount(){
+      const citasLs = localStorage.getItem('citas');
+      if(citasLs){
+        this.setState({
+          citas : JSON.parse(citasLs)
+        })
+      }
+   }
+   //Ciamdp eliminamos o ingresamos una nueva cita
+   componentDidUpdate(){
+     localStorage.setItem('citas',JSON.stringify(this.state.citas));
+   }
+
+
+   //Para crear una nueva cita
    crearNuevaCita = datos =>{
     //  console.log(datos);
     //copiar el state acutal
@@ -30,6 +47,7 @@ const citasActuales = [...this.state.citas];
     //actualizar el state
     this.setState({citas});
   }
+
   render() { 
     return ( 
       <div className="container">
