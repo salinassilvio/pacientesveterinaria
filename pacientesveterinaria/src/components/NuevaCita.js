@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import uuid from 'uuid';
+
+const stateIncial = {
+    cita:{
+    mascota:'',
+    propietario: '',
+    fecha:'',
+    hora:'',
+    sintomas:''
+    },
+    error: false
+}
+
 class NuevaCita extends Component {
-    state = { 
-        cita:{
-            mascota:'',
-            propietario: '',
-            fecha:'',
-            hora:'',
-            sintomas:''
-        },
-        error: false
-     }
+    state = { ...stateIncial}
     //Cuando el usuario escribe en los inputs
     handleChange = e =>{
         //Concatenamos
@@ -46,7 +49,13 @@ class NuevaCita extends Component {
             //Agregar la cita al state de APP
             //datos del componente hijo al padre
             this.props.crearNuevaCita(nuevaCita)
+
+            //Colocar en el state el stateInicial
+            this.setState({
+                ...stateIncial
+            })
     }
+
     render() {
 
         //Extraer valor del state 
