@@ -3,11 +3,13 @@ import Cita from './Cita';
 import PropTypes from 'prop-types';
 
 const ListaCitas = ({citas,eliminarCita}) => {
+    //Imprimir un mensaje en base a si hay ciitas o no
+    const mensaje = Object.keys(citas).length === 0 ? 'No hay citas' : 'Administra las citas aqui'
     return ( 
         <div className="card mt-2 py-5">
             <div className="card-body">
                 <h2 className="card-title text-center">
-                    Administra las Citas aqui
+                    {mensaje}
                 </h2>
                 <div className="lista-citas">
                     {citas.map(cita =>(
